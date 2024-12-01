@@ -54,7 +54,7 @@ contentRouter.get("/v1/content",userAuthentication,async(req:Request,res:Respons
             userId:userId
         })
         if (userData.length === 0) {
-            throw new Error("No content found ")
+            throw new Error("No content found")
         }
 
         res.json({

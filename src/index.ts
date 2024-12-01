@@ -4,6 +4,7 @@ import { userModel } from "./models/user"
 import { connectDB } from "./config/db"
 import userRouter from "./routes/user"
 import contentRouter from "./routes/content"
+import shareRouter from "./routes/share"
 import cookieParser from "cookie-parser"
 const app=express()
 
@@ -12,6 +13,7 @@ app.use(express.json())
 
 app.use("/user",userRouter);
 app.use("/content",contentRouter);
+app.use("/brain",shareRouter);
 
 connectDB().then(()=>{
     console.log("DB is connected successfully");   
