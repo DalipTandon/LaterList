@@ -41,13 +41,33 @@ contentRouter.delete("/v1/content/:contentId",userAuthentication,async(req:Reque
         })
 
     }catch(error:any){
-        res.status(400).json({
+        res.status(500).json({
             message:error.message || "Internal server error"
         })
     }
 })
 
+contentRouter.get("/v1/content",userAuthentication,async(req:Request,res:Response)=>{
+    try{
+        const userId=req.user._id;
+        const userData=await contentModel.find({
+            userId:userId
+        })
+        if (userData.length === 0) {
+            throw new Error("No content found ")
+        }
 
+        res.json({
+            message:"Your content data is fetched successfully",
+            data:userData
+        })
+
+    }catch(error:any){
+        res.status(500).json({
+            message:error.message
+        })
+    }
+})
 
 
 
