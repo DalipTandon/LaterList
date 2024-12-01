@@ -3,6 +3,7 @@ import mongoose   from "mongoose"
 import { userModel } from "./models/user"
 import { connectDB } from "./config/db"
 import userRouter from "./routes/user"
+import contentRouter from "./routes/content"
 import cookieParser from "cookie-parser"
 const app=express()
 
@@ -10,6 +11,7 @@ app.use(cookieParser())
 app.use(express.json())
 
 app.use("/user",userRouter);
+app.use("/content",contentRouter);
 
 connectDB().then(()=>{
     console.log("DB is connected successfully");   
