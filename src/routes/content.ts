@@ -14,7 +14,8 @@ contentRouter.post("/v1/content" ,userAuthentication,async(req:Request,res:Respo
       });
 
       res.status(200).json({
-        message:"Content successfully added"
+        message:"Content successfully added",
+        data:content
       })
 
     }catch(error:any){
